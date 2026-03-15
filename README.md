@@ -1,4 +1,4 @@
-# emom
+# <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2300ff88'/%3E%3Ctext x='50' y='72' font-size='70' font-weight='900' font-family='system-ui,sans-serif' fill='%230a0a12' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E" width="32" height="32" alt="emom favicon" /> emom
 
 each minute on the minute.
 
