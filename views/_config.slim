@@ -1,0 +1,27 @@
+div data-timer-target="configScreen" data-controller="config" data-mode="duration" class="flex-1 flex flex-col items-center pt-12 px-6"
+  .w-full.max-w-md.lg:max-w-lg.space-y-6
+
+    .flex.gap-2
+      == mode_tab("duration", active: true)
+      == mode_tab("target")
+
+    .space-y-2
+      label.stepper-label exercise (optional)
+      input data-config-target="exercise" type="text" placeholder="e.g. push-ups" autocomplete="off" class="w-full stepper-input text-lg px-4 py-3"
+
+    .flex.gap-4.justify-center
+      div data-config-target="durationGroup" class="flex-1"
+        == stepper(field: "duration", label: "duration (min)", value: 10, min: 1, max: 120)
+      div data-config-target="targetGroup" class="flex-1 hidden"
+        == stepper(field: "target", label: "target (reps)", value: 100, min: 1, max: 9999)
+      .flex-1
+        == stepper(field: "reps", label: "reps / min", value: 5, min: 1, max: 100)
+
+    div data-config-target="totalPreview" class="text-center py-4 panel"
+
+    .flex.items-center.gap-3
+      button.flex-1.py-4.bg-accent-green.text-dark-900.text-xl.font-extrabold.tracking-tight.hover:brightness-110.active:scale-95.transition-all data-action="config#start"
+        | start
+      button data-config-target="soundToggle" data-action="config#toggleSound" class="w-14 h-14 panel flex items-center justify-center hover:border-accent-green transition group"
+        span data-config-target="soundKnob" class="text-gray-400 group-hover:text-white transition"
+          == icon_sound_on

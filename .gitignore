@@ -1,0 +1,14 @@
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+pkg
+spec/reports
+tmp
+.env
+.env.*
+*.sqlite3
+.DS_Store
+Gemfile.lock
+.idea/

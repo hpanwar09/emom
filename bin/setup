@@ -1,0 +1,37 @@
+#!/bin/bash
+set -e
+
+echo "Setting up emom..."
+
+EMOM_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+echo "  Installing dependencies..."
+cd "$EMOM_DIR" && bundle install --quiet
+
+echo "  Installing 'emom' command..."
+sudo tee /usr/local/bin/emom > /dev/null << SCRIPT
+#!/bin/bash
+EMOM_DIR="$EMOM_DIR"
+case "\${1:-start}" in
+  start)
+    cd "\$EMOM_DIR" && bundle exec ruby bin/start
+    ;;
+  test)
+    cd "\$EMOM_DIR" && bundle exec rspec spec/
+    ;;
+  lint)
+    cd "\$EMOM_DIR" && bundle exec rubocop lib/ spec/
+    ;;
+  *)
+    echo "emom - EMOM workout timer"
+    echo ""
+    echo "  emom          start the server"
+    echo "  emom test     run specs"
+    echo "  emom lint     run rubocop"
+    ;;
+esac
+SCRIPT
+sudo chmod +x /usr/local/bin/emom
+
+echo ""
+echo "  Done! Type 'emom' from anywhere to start."

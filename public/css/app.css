@@ -1,0 +1,82 @@
+.glow-green {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.2);
+}
+
+.glow-orange {
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.5),
+    0 0 40px rgba(255, 107, 53, 0.2);
+}
+
+.glow-red {
+  text-shadow: 0 0 10px rgba(255, 51, 85, 0.5), 0 0 40px rgba(255, 51, 85, 0.2);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+.stepper-btn {
+  width: 3rem;
+  height: 3rem;
+  background: #0f0f1a;
+  border: 1px solid #1a1a2e;
+  font-size: 1.5rem;
+  color: #9ca3af;
+  font-weight: 700;
+  transition: all 0.15s;
+}
+.stepper-btn:hover {
+  color: #fff;
+  border-color: #00ff88;
+}
+
+.stepper-input {
+  width: 4rem;
+  text-align: center;
+  background: #0f0f1a;
+  border: 1px solid #1a1a2e;
+  padding: 0.5rem;
+  color: #fff;
+  font-size: 1.25rem;
+  font-family: "JetBrains Mono", monospace;
+  transition: all 0.15s;
+}
+.stepper-input:focus {
+  border-color: #00ff88;
+  outline: none;
+}
+
+.stepper-label {
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.panel {
+  background: #0f0f1a;
+  border: 1px solid #1a1a2e;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 0.5rem;
+  border-bottom: 2px solid #252540;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #6b7280;
+  transition: all 0.15s;
+}
+.mode-tab.active {
+  border-color: #00ff88;
+  color: #fff;
+}

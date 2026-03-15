@@ -1,0 +1,8 @@
+.flex-1.space-y-2.text-center
+  label.stepper-label = label
+  .flex.items-center.justify-center.gap-2
+    button.stepper-btn data-action="config#decrement" data-config-field-param=field
+      | −
+    input.stepper-input id=field data-config-target=target type="number" value=value min=min max=max data-action="input->config#updatePreview"
+    button.stepper-btn data-action="config#increment" data-config-field-param=field
+      | +

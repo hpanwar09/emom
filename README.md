@@ -1,0 +1,66 @@
+# emom
+
+a minimalist EMOM (Every Minute On the Minute) workout timer. runs from your terminal, opens in your browser.
+
+dark theme. flip-clock font. audio countdown. downloadable workout summary card.
+
+## setup
+
+```bash
+git clone https://github.com/hpanwar/emom.git
+cd emom
+bin/setup
+```
+
+this installs dependencies and adds the `emom` command to your system.
+
+## usage
+
+```bash
+emom          # start the timer (opens browser)
+emom test     # run specs
+emom lint     # run rubocop
+```
+
+## how it works
+
+1. configure your workout — set duration or target reps, reps per minute, exercise name
+2. hit start — 3-2-1 countdown with audio beeps
+3. timer runs — shows time left, current round, reps completed
+4. workout complete — summary card you can download as an image
+
+## two modes
+
+- **duration** — set minutes + reps per minute (e.g. 10 min × 5 reps = 50 total)
+- **target** — set total reps + reps per minute (e.g. 500 reps ÷ 10/min = 50 min)
+
+## tech
+
+- ruby + sinatra (backend)
+- slim templates + stimulus.js (frontend)
+- web audio api (beeps, no audio files)
+- web worker (accurate timer, immune to tab throttling)
+- sqlite (local data)
+- tailwind cdn (styling)
+- html2canvas (share card generation)
+
+## requirements
+
+- ruby 3.1+
+- bundler
+
+## development
+
+```bash
+bundle install
+bundle exec ruby bin/start
+```
+
+runs at `http://localhost:4567`
+
+## tests
+
+```bash
+bundle exec rspec spec/
+bundle exec rubocop lib/ spec/
+```

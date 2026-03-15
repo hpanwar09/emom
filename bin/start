@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/emom'
+
+Emom::Database.cleanup!
+
+port = ENV.fetch('PORT', 4567).to_i
+
+existing_pid = `lsof -ti:#{port} 2>/dev/null`.strip
+unless existing_pid.empty?
+  begin
+    Process.kill(9, existing_pid.to_i)
+  rescue StandardError
+    nil
+  end
+  sleep 0.5
+end
+host = '127.0.0.1'
+url  = "http://localhost:#{port}"
+
+puts ''
+puts "  emom v#{Emom::VERSION}"
+puts '  ─────────────────────────────'
+puts "  Running at: #{url}"
+puts '  Press Ctrl+C to stop'
+puts ''
+
+Thread.new do
+  sleep 1.5
+  require 'launchy'
+  Launchy.open(url)
+rescue StandardError
+  puts "  ⚠️  Could not open browser. Open #{url} manually."
+end
+
+Emom::Server.run!(
+  port: port,
+  bind: host,
+  server: :puma,
+  quiet: true
+)
