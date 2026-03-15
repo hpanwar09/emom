@@ -1,13 +1,15 @@
 # emom
 
-a minimalist EMOM (Every Minute On the Minute) workout timer. runs from your terminal, opens in your browser.
+each minute on the minute.
+
+a minimalist emom workout timer. runs from your terminal, opens in your browser.
 
 dark theme. flip-clock font. audio countdown. downloadable workout summary card.
 
 ## setup
 
 ```bash
-git clone https://github.com/hpanwar/emom.git
+git clone https://github.com/hpanwar09/emom.git
 cd emom
 bin/setup
 ```
