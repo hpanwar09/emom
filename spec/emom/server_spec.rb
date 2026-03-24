@@ -17,7 +17,7 @@ RSpec.describe Emom::Server do
     it 'renders the config screen' do
       get '/', {}, { 'HTTP_HOST' => 'localhost' }
       expect(last_response.body).to include('emom')
-      expect(last_response.body).to include('duration')
+      expect(last_response.body).to include('reps every minute')
       expect(last_response.body).to include('start')
     end
   end

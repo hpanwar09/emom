@@ -1,30 +1,21 @@
-div data-timer-target="timerScreen" class="flex-1 flex flex-col items-center justify-between py-8 px-6 hidden"
+div data-timer-target="timerScreen" class="flex-1 flex flex-col items-center justify-center hidden"
 
-  .text-center
-    .flex.items-baseline.justify-center.gap-2
-      span.text-gray-500.text-base.font-bold set
-      span data-timer-target="currentRound" class="text-3xl font-extrabold text-white" 1
-      span.text-gray-400.text-xl
-        | /
-      span data-timer-target="totalRounds" class="text-3xl font-extrabold text-gray-500" 10
+  /! Round — top line
+  p.text-sm.font-semibold.text-muted.uppercase.tracking-wide.mb-8
+    | round
+    span.text-white.ml-1 data-timer-target="currentRound" 1
+    span.text-muted.mx-1
+      | /
+    span data-timer-target="totalRounds" 10
 
-  .flex-1.flex.flex-col.items-center.justify-center
-    p.text-gray-500.text-base.mb-4.font-bold time left
-    div data-timer-target="timerDisplay" class="font-clock text-[14rem] leading-none text-accent-green glow-green tabular-nums"
-      | 1:00
-    button.mt-6.px-8.py-3.bg-dark-800.border.border-dark-700.text-gray-400.font-bold.hover:text-accent-red.hover:border-accent-red.transition data-action="timer#stopWorkout"
-      | stop
+  /! Countdown — dominant
+  div data-timer-target="timerDisplay" class="text-8xl sm:text-9xl font-black tabular text-green tracking-tight"
+    | 1:00
 
-  .text-center.space-y-3
-    .flex.items-baseline.justify-center.gap-2
-      span data-timer-target="repsDone" class="text-6xl font-extrabold text-white" 0
-      span.text-gray-400.text-3xl
-        | /
-      span data-timer-target="repsTarget" class="text-3xl font-extrabold text-gray-500" 50
-    p.text-gray-500.text-sm.font-bold.mt-1 reps completed
+  /! Reps — secondary
+  p.text-muted.text-sm.mt-8.tabular
+    span.text-white.font-bold data-timer-target="repsDone" 0
+    |  reps
 
-    .w-80.h-3.bg-dark-700.rounded-full.overflow-hidden.mx-auto.mt-4
-      div data-timer-target="progressBar" class="h-full bg-accent-green rounded-full transition-all duration-300" style="width: 0%"
-
-    p.text-gray-600.text-xs.mt-4.tracking-widest each minute on the minute
-
+  /! Stop
+  button.btn-ghost.mt-10 data-action="timer#stopWorkout" stop

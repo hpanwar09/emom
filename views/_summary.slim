@@ -1,33 +1,17 @@
-div data-timer-target="summaryScreen" class="flex-1 flex flex-col items-center py-8 px-6 hidden"
-  .w-full.max-w-md
+div data-timer-target="summaryScreen" class="flex-1 flex flex-col justify-center hidden"
 
-    #share-card.panel.p-8.space-y-8
-      .text-center
-        p.text-accent-green.text-sm.font-extrabold.tracking-widest.uppercase workout complete
-        h2 data-timer-target="summaryExercise" class="text-3xl font-extrabold text-white mt-2" workout
+  #share-card.share-card.p-8.space-y-6
 
-      .grid.grid-cols-3.gap-4
-        .text-center
-          p data-timer-target="summaryDuration" class="font-clock text-4xl text-accent-green" 0:00
-          p.stepper-label.mt-1 duration
-        .text-center
-          p data-timer-target="summaryRounds" class="font-clock text-4xl text-white" 0
-          p.stepper-label.mt-1 rounds
-        .text-center
-          p data-timer-target="summaryReps" class="font-clock text-4xl text-white" 0
-          p.stepper-label.mt-1 reps
+    .text-center
+      p.text-green.text-sm.font-semibold.tracking-widest.uppercase.mb-6 done
+      p.text-2xl.font-bold.text-white data-timer-target="summaryHeadline"
+      p.text-5xl.font-bold.text-green.mt-3.tabular data-timer-target="summaryReps" 0
+      p.text-lg.text-muted.mt-1 total reps
 
-      .flex.justify-center.gap-6.text-sm
-        span data-timer-target="summaryDetail" class="text-gray-400 font-bold"
+    .border-t.border-line.pt-4.flex.justify-between.items-center
+      span.text-xs.font-bold.text-muted.tracking-wide emom
+      span.text-xs.text-muted data-timer-target="summaryDate"
 
-      .text-center
-        p data-timer-target="summaryDate" class="text-gray-600 text-xs"
-
-      .text-center.pt-4.border-t.border-dark-700
-        span.text-gray-600.text-xs.font-extrabold.tracking-tight emom
-
-    .flex.gap-3.mt-6
-      button.flex-1.py-3.bg-accent-green.text-dark-900.font-extrabold.hover:brightness-110.active:scale-95.transition-all data-action="timer#restart"
-        | start new
-      button.flex-1.py-3.panel.text-white.font-bold.hover:border-accent-green.transition data-action="timer#downloadCard"
-        | save image
+  .flex.gap-3.mt-6
+    button.btn-sm.bg-green.text-bg data-action="timer#restart" new workout
+    button.btn-sm.bg-card.text-white.border.border-line data-action="timer#downloadCard" save image

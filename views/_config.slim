@@ -1,27 +1,16 @@
-div data-timer-target="configScreen" data-controller="config" data-mode="duration" class="flex-1 flex flex-col items-center pt-12 px-6"
-  .w-full.max-w-md.lg:max-w-lg.space-y-6
+div data-timer-target="configScreen" data-controller="config" class="flex-1 flex flex-col justify-center"
 
-    .flex.gap-2
-      == mode_tab("duration", active: true)
-      == mode_tab("target")
+  .mb-10
+    label.text-sm.font-medium.text-dim.mb-2.block exercise
+    input.input data-config-target="exercise" type="text" placeholder="push-ups, burpees…" autocomplete="off" required=""
+    p.text-red.text-xs.mt-2.hidden data-config-target="exerciseError" enter an exercise name
 
-    .space-y-2
-      label.stepper-label exercise (optional)
-      input data-config-target="exercise" type="text" placeholder="e.g. push-ups" autocomplete="off" class="w-full stepper-input text-lg px-4 py-3"
+  .space-y-5.mb-10
+    == stepper(field: "reps", label: "reps every minute", value: 5, min: 1, max: 100, target: "reps")
+    == stepper(field: "rounds", label: "for rounds", value: 10, min: 1, max: 120, target: "rounds")
 
-    .flex.gap-4.justify-center
-      div data-config-target="durationGroup" class="flex-1"
-        == stepper(field: "duration", label: "duration (min)", value: 10, min: 1, max: 120)
-      div data-config-target="targetGroup" class="flex-1 hidden"
-        == stepper(field: "target", label: "target (reps)", value: 100, min: 1, max: 9999)
-      .flex-1
-        == stepper(field: "reps", label: "reps / min", value: 5, min: 1, max: 100)
-
-    div data-config-target="totalPreview" class="text-center py-4 panel"
-
-    .flex.items-center.gap-3
-      button.flex-1.py-4.bg-accent-green.text-dark-900.text-xl.font-extrabold.tracking-tight.hover:brightness-110.active:scale-95.transition-all data-action="config#start"
-        | start
-      button data-config-target="soundToggle" data-action="config#toggleSound" class="w-14 h-14 panel flex items-center justify-center hover:border-accent-green transition group"
-        span data-config-target="soundKnob" class="text-gray-400 group-hover:text-white transition"
-          == icon_sound_on
+  .flex.gap-3
+    button.btn data-action="config#start" start
+    button.btn-sound data-config-target="soundToggle" data-action="config#toggleSound"
+      span data-config-target="soundKnob"
+        == icon_sound_on
