@@ -2,37 +2,35 @@ doctype html
 html lang="en"
   head
     meta charset="UTF-8"
-    meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
-    meta name="theme-color" content="#0a0a12"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    meta name="mobile-web-app-capable" content="yes"
+    meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"
+    meta name="theme-color" content="#111"
     title emom
     link rel="icon" type="image/svg+xml" href="/favicon.svg"
     link rel="preconnect" href="https://fonts.googleapis.com"
     link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""
-    link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"
     script src="https://cdn.tailwindcss.com"
     script
       | tailwind.config = {
       |   theme: {
       |     extend: {
       |       colors: {
-      |         dark: { 900: '#0a0a12', 800: '#0f0f1a', 700: '#1a1a2e', 600: '#252540' },
-      |         accent: { green: '#00ff88', orange: '#ff6b35', red: '#ff3355' }
+      |         bg: '#111',
+      |         card: '#191919',
+      |         line: '#262626',
+      |         muted: '#555',
+      |         dim: '#888',
+      |         green: '#22c55e',
+      |         orange: '#f97316',
+      |         red: '#ef4444'
       |       },
       |       fontFamily: {
-      |         mono: ['JetBrains Mono', 'monospace'],
-      |         clock: ['DSEG7 Classic', 'monospace']
+      |         sans: ['Inter', 'system-ui', 'sans-serif']
       |       }
       |     }
       |   }
-      | }
-    style
-      | @font-face {
-      |   font-family: 'DSEG7 Classic';
-      |   font-style: normal;
-      |   font-display: swap;
-      |   font-weight: 700;
-      |   src: url(https://cdn.jsdelivr.net/fontsource/fonts/dseg7-classic@latest/latin-700-normal.woff2) format('woff2'),
-      |        url(https://cdn.jsdelivr.net/fontsource/fonts/dseg7-classic@latest/latin-700-normal.woff) format('woff');
       | }
     link rel="stylesheet" href="/css/app.css"
 
@@ -44,15 +42,25 @@ html lang="en"
       |   }
       | }
 
-  body.bg-dark-900.text-white.min-h-screen.font-mono.flex.flex-col
-    nav.bg-dark-800.shadow-lg.border-b.border-dark-700
-      .container.mx-auto.px-5.py-4
-        a.flex.items-center.hover:opacity-80.transition-opacity href="/"
-          span.text-2xl.font-extrabold.tracking-tight emom
+  body.bg-bg.text-white.font-sans.antialiased
+    .max-w-md.w-full.mx-auto.flex.flex-col.min-h-svh.px-6
 
-    main.flex-1.flex.flex-col
-      == yield
+      header.py-5
+        a.text-base.font-bold.tracking-tight.text-muted.hover:text-white.transition-colors href="/" emom
+
+      main.flex-1.flex.flex-col
+        == yield
 
     script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
     script src="/js/audio.js"
     script type="module" src="/js/application.js"
+    script
+      | (function(){
+      |   let last = 0;
+      |   setInterval(function(){
+      |     fetch('/dev/changes').then(r=>r.json()).then(d=>{
+      |       if(last && d.mtime !== last) location.reload();
+      |       last = d.mtime;
+      |     }).catch(()=>{});
+      |   }, 1000);
+      | })();

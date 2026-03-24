@@ -4,8 +4,6 @@ each minute on the minute.
 
 a minimalist emom workout timer. runs from your terminal, opens in your browser.
 
-dark theme. flip-clock font. audio countdown. downloadable workout summary card.
-
 ## setup
 
 ```bash
@@ -26,20 +24,24 @@ emom lint     # run rubocop
 
 ## how it works
 
-1. configure your workout — set duration or target reps, reps per minute, exercise name
+1. pick your exercise and set reps per minute + number of rounds
 2. hit start — 3-2-1 countdown with audio beeps
-3. timer runs — shows time left, current round, reps completed
-4. workout complete — summary card you can download as an image
+3. timer runs — big countdown, round counter, rep tally
+4. stop or let it finish — summary card you can download as an image
 
-## two modes
+## dev
 
-- **duration** — set minutes + reps per minute (e.g. 10 min × 5 reps = 50 total)
-- **target** — set total reps + reps per minute (e.g. 500 reps ÷ 10/min = 50 min)
+live-reload is built in — save any file in `views/`, `public/`, or `lib/` and the browser refreshes automatically.
+
+```bash
+emom          # start server + open browser
+```
 
 ## tech
 
 - ruby + sinatra (backend)
 - slim templates + stimulus.js (frontend)
+- inter (typography)
 - web audio api (beeps, no audio files)
 - web worker (accurate timer, immune to tab throttling)
 - sqlite (local data)
@@ -50,15 +52,6 @@ emom lint     # run rubocop
 
 - ruby 3.1+
 - bundler
-
-## development
-
-```bash
-bundle install
-bundle exec ruby bin/start
-```
-
-runs at `http://localhost:4567`
 
 ## tests
 

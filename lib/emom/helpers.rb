@@ -10,11 +10,6 @@ module Emom
       }
     end
 
-    def mode_tab(mode, active: false)
-      css = "mode-tab#{' active' if active}"
-      %(<button class="#{css}" data-action="config#setMode" data-mode="#{mode}">#{mode}</button>)
-    end
-
     def icon_sound_on
       <<~SVG
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -40,15 +35,6 @@ module Emom
       t.strftime('%b %d · %l:%M %p').downcase.strip
     rescue StandardError
       time.to_s
-    end
-
-    def mode_badge(mode)
-      case mode
-      when 'target'
-        %(<span class="text-xs px-2 py-0.5 bg-dark-600 text-accent-green font-bold">target</span>)
-      when 'open'
-        %(<span class="text-xs px-2 py-0.5 bg-dark-600 text-accent-orange font-bold">open</span>)
-      end
     end
   end
 end
